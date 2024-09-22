@@ -40,7 +40,7 @@ end)
 local txtl = Instance.new('TextLabel',bframe)
 txtl.Size = UDim2.new(1,0,0.2)
 txtl.BackgroundColor3 = Color3.new(0.388235, 0.388235, 0.388235)
-txtl.Text = "Dupe any items eqquipped!"
+txtl.Text = "Dupe any items eqquipped! rev:1"
 txtl.BorderSizePixel = 0
 local btn = Instance.new("TextButton",bframe)
 btn.Size = UDim2.new(1,0,0.2,0)
