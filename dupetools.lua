@@ -73,6 +73,7 @@ btn.MouseButton1Up:Connect(function()
 		end
 	end
 	local toolClone = toolInSlot1:Clone()
+	toolClone.CanBeDropped = true
 	toolClone.Parent = backpack
 end)
 
