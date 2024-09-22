@@ -94,8 +94,8 @@ local style = {
 	0
 }
 local scripts = {
-	{'Infinite Yield','https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'},
-	{'Dark Dex V5', 'https://raw.githubusercontent.com/AlterX404/DarkDEX-V5/refs/heads/main/DarkDEX-V5'}
+	{'doesn work awe','https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'},
+	{'doesn work awe', 'https://raw.githubusercontent.com/AlterX404/DarkDEX-V5/refs/heads/main/DarkDEX-V5'}
 }
 
 for i,v in pairs(scripts) do
@@ -105,9 +105,6 @@ for i,v in pairs(scripts) do
 	scb.BackgroundColor3 = style[3]
 	scb.BorderSizePixel = style[4]
 	scb.Text = v[1]
-	scb.MouseButton1Up:Connect(function()
-		loadstring(v[2])
-	end)
 end
 
 
@@ -164,3 +161,5 @@ morebtn.MouseButton1Up:Connect(function()
 		infr = false
 	end
 end)
+
+
