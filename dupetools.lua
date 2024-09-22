@@ -5,27 +5,56 @@ local base = Instance.new("ScreenGui",plrUI)
 local bframe = Instance.new("Frame",base)
 bframe.Size = UDim2.new(0.2,0,0.2,0)
 bframe.Position = UDim2.new(0.5, 0, 0.5, 0)
-local c1 = Instance.new("UICorner",bframe)
-c1.CornerRadius = UDim.new(0,20)
+bframe.BackgroundColor3 = Color3.new(0.239216, 0.239216, 0.239216)
+bframe.BorderSizePixel = 0
+local dragging = false
+local dragStart = nil
+local startPos = nil
+local UIS = game:GetService("UserInputService")
+
+bframe.InputBegan:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseButton1 then
+		dragging = true
+		dragStart = input.Position
+		startPos = bframe.Position
+	end
+end)
+
+bframe.InputChanged:Connect(function(input)
+	if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
+		local delta = input.Position - dragStart
+		bframe.Position = UDim2.new(
+			startPos.X.Scale,
+			startPos.X.Offset + delta.X,
+			startPos.Y.Scale,
+			startPos.Y.Offset + delta.Y
+		)
+	end
+end)
+
+UIS.InputEnded:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseButton1 then
+		dragging = false
+	end
+end)
 local txtl = Instance.new('TextLabel',bframe)
-Instance.new("UICorner",txtl).CornerRadius = UDim.new(0,20)
-txtl.Size = UDim2.new(0.7,0,0.3)
-txtl.BackgroundTransparency = 1
+txtl.Size = UDim2.new(1,0,0.2)
+txtl.BackgroundColor3 = Color3.new(0.388235, 0.388235, 0.388235)
 txtl.Text = "Dupe any items on slot 1!"
-txtl.Position = UDim2.new(0.15,0,0,0)
+txtl.BorderSizePixel = 0
 local btn = Instance.new("TextButton",bframe)
-btn.Size = UDim2.new(0.7,0,0.4,0)
+btn.Size = UDim2.new(1,0,0.2,0)
 btn.BackgroundTransparency = 0.5
 btn.BackgroundColor3 = Color3.new(1,1,1)
-btn.Position = UDim2.new(0.1,0,0.6,0)
+btn.Position = UDim2.new(0,0,0.7,0)
 btn.Text = 'Dupe'
-Instance.new("UICorner",btn).CornerRadius = UDim.new(0,20)
+btn.BorderSizePixel = 0
 local unloadbtn = Instance.new("TextButton",bframe)
-unloadbtn.Size = UDim2.new(0.15,0,0.07,0)
+unloadbtn.Size = UDim2.new(1,0,0.1,0)
 unloadbtn.BackgroundColor3 = Color3.new(1,0,0)
 unloadbtn.Text = 'Unload'
-unloadbtn.Position = UDim2.new(0,0,0.4)
-
+unloadbtn.Position = UDim2.new(0,0,0.9)
+unloadbtn.BorderSizePixel = 0
 
 -- Scripts
 local backpack = game:GetService("Players").LocalPlayer.Backpack
