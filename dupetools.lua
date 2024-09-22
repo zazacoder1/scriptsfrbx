@@ -62,17 +62,16 @@ local backpack = game:GetService("Players").LocalPlayer.Backpack
 btn.MouseButton1Up:Connect(function()
 	local tools = backpack:GetChildren()
 	local toolInSlot1 = nil
-
-    -- Loop through all tools in the character (equipped tools)
-    for _, tool in ipairs(character:GetChildren()) do
-        if tool:IsA("Tool") and tool.Parent == character then
-            -- Check if the tool is equipped in slot 1
-            if player.Backpack:FindFirstChild(tool.Name) then
-                toolInSlot1 = tool
-                break
-            end
-        end
-    end
+	game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid")
+	local character = game:GetService("Players").LocalPlayer.Character
+	
+	-- Loop through all tools in the character (equipped tools)
+	for _, tool in ipairs(character:GetChildren()) do
+		if tool:IsA("Tool") and tool.Parent == character then
+			toolInSlot1 = tool
+			break
+		end
+	end
 	local toolClone = toolInSlot1:Clone()
 	toolClone.Parent = backpack
 end)
