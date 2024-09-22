@@ -40,7 +40,7 @@ end)
 local txtl = Instance.new('TextLabel',bframe)
 txtl.Size = UDim2.new(1,0,0.2)
 txtl.BackgroundColor3 = Color3.new(0.388235, 0.388235, 0.388235)
-txtl.Text = "Dupe any items on slot 1!"
+txtl.Text = "Dupe any items eqquipped!"
 txtl.BorderSizePixel = 0
 local btn = Instance.new("TextButton",bframe)
 btn.Size = UDim2.new(1,0,0.2,0)
@@ -61,10 +61,20 @@ local backpack = game:GetService("Players").LocalPlayer.Backpack
 
 btn.MouseButton1Up:Connect(function()
 	local tools = backpack:GetChildren()
-	if tools[1] and tools[1]:IsA("Tool") then
-		local toolClone = tools[1]:Clone()
-		toolClone.Parent = backpack
-	end
+	local toolInSlot1 = nil
+
+    -- Loop through all tools in the character (equipped tools)
+    for _, tool in ipairs(character:GetChildren()) do
+        if tool:IsA("Tool") and tool.Parent == character then
+            -- Check if the tool is equipped in slot 1
+            if player.Backpack:FindFirstChild(tool.Name) then
+                toolInSlot1 = tool
+                break
+            end
+        end
+    end
+	local toolClone = toolInSlot1:Clone()
+	toolClone.Parent = backpack
 end)
 
 unloadbtn.MouseButton1Up:Connect(function()
