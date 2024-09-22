@@ -18,6 +18,7 @@ btn.Size = UDim2.new(0.7,0,0.4,0)
 btn.BackgroundTransparency = 0.5
 btn.BackgroundColor3 = Color3.new(1,1,1)
 btn.Position = UDim2.new(0.1,0,0.6,0)
+btn.Text = 'Dupe'
 Instance.new("UICorner",btn).CornerRadius = UDim.new(0,20)
 local unloadbtn = Instance.new("TextButton",bframe)
 unloadbtn.Size = UDim2.new(0.15,0,0.07,0)
